@@ -1,0 +1,283 @@
+
+
+
+    <!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Zakupów</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFF7D6;
+            margin: 0;
+            padding: 0;
+            color: #4A4A4A;
+        }
+
+        header {
+            background-color: #FF8C00;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .category {
+            background-color: #FFD700;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 8px;
+            border: 2px solid #FF8C00;
+            transition: all 0.3s;
+        }
+
+        .category:hover {
+            background-color: #FF8C00;
+        }
+
+        .subcategory {
+            display: none;
+            padding-left: 20px;
+            margin-top: 10px;
+            border-left: 2px solid #FF8C00;
+        }
+
+        .product {
+            display: flex;
+            justify-content: space-between;
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #FF8C00;
+        }
+
+        .product img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .product-price {
+            color: #FF8C00;
+            font-size: 18px;
+        }
+
+        .product-store {
+            font-size: 14px;
+            color: #4A4A4A;
+        }
+
+        .add-to-list {
+            background-color: #FF8C00;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-list:hover {
+            background-color: #FFD700;
+        }
+
+        .total-price {
+            background-color: #FF8C00;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 24px;
+        }
+
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            background-color: #FFF4E6;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .list-item span {
+            font-size: 16px;
+        }
+
+        .list-item .remove-btn {
+            background-color: #FF8C00;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .list-item .remove-btn:hover {
+            background-color: #FFD700;
+        }
+    </style>
+</head>
+<body>
+
+<header>Lista Zakupów</header>
+
+<div class="content">
+    <div class="category" onclick="toggleSubcategory('kosmetyki')">Kosmetyki</div>
+    <div id="kosmetyki" class="subcategory">
+        <div class="product">
+            <div class="product-info">
+                <span class="product-name">Maseczka do twarzy</span>
+                <span class="product-price">45.00 PLN</span>
+                <span class="product-store">Sephora</span>
+            </div>
+            <img src="https://via.placeholder.com/50" alt="Produkt 1">
+            <button class="add-to-list" onclick="addToList('Maseczka do twarzy', 45.00)">Dodaj do listy</button>
+        </div>
+        <div class="product">
+            <div class="product-info">
+                <span class="product-name">Serum do twarzy</span>
+                <span class="product-price">99.00 PLN</span>
+                <span class="product-store">Douglas</span>
+            </div>
+            <img src="https://via.placeholder.com/50" alt="Produkt 2">
+            <button class="add-to-list" onclick="addToList('Serum do twarzy', 99.00)">Dodaj do listy</button>
+        </div>
+    </div>
+
+    <div class="category" onclick="toggleSubcategory('perfumy')">Perfumy</div>
+    <div id="perfumy" class="subcategory">
+        <div class="product">
+            <div class="product-info">
+                <span class="product-name">Chanel No. 5</span>
+                <span class="product-price">450.00 PLN</span>
+                <span class="product-store">Chanel</span>
+            </div>
+            <img src="https://via.placeholder.com/50" alt="Produkt 3">
+            <button class="add-to-list" onclick="addToList('Chanel No. 5', 450.00)">Dodaj do listy</button>
+        </div>
+        <div class="product">
+            <div class="product-info">
+                <span class="product-name">Dior Sauvage</span>
+                <span class="product-price">350.00 PLN</span>
+                <span class="product-store">Dior</span>
+            </div>
+            <img src="https://via.placeholder.com/50" alt="Produkt 4">
+            <button class="add-to-list" onclick="addToList('Dior Sauvage', 350.00)">Dodaj do listy</button>
+        </div>
+    </div>
+
+    <div class="category" onclick="toggleSubcategory('elektronika')">Elektronika</div>
+    <div id="elektronika" class="subcategory">
+        <div class="product">
+            <div class="product-info">
+                <span class="product-name">Smartphone XYZ</span>
+                <span class="product-price">1200.00 PLN</span>
+                <span class="product-store">MediaMarkt</span>
+            </div>
+            <img src="https://via.placeholder.com/50" alt="Produkt 5">
+            <button class="add-to-list" onclick="addToList('Smartphone XYZ', 1200.00)">Dodaj do listy</button>
+        </div>
+        <div class="product">
+            <div class="product-info">
+                <span class="product-name">Laptop Acer</span>
+                <span class="product-price">3000.00 PLN</span>
+                <span class="product-store">Acer</span>
+            </div>
+            <img src="https://via.placeholder.com/50" alt="Produkt 6">
+            <button class="add-to-list" onclick="addToList('Laptop Acer', 3000.00)">Dodaj do listy</button>
+        </div>
+    </div>
+
+    <div class="category" onclick="toggleSubcategory('ubrania')">Ubrania</div>
+    <div id="ubrania" class="subcategory">
+        <div class="product">
+            <div class="product-info">
+                <span class="product-name">T-shirt Nike</span>
+                <span class="product-price">79.99 PLN</span>
+                <span class="product-store">Nike</span>
+            </div>
+            <img src="https://via.placeholder.com/50" alt="Produkt 7">
+            <button class="add-to-list" onclick="addToList('T-shirt Nike', 79.99)">Dodaj do listy</button>
+        </div>
+        <div class="product">
+            <div class="product-info">
+                <span class="product-name">Bluza Adidas</span>
+                <span class="product-price">159.00 PLN</span>
+                <span class="product-store">Adidas</span>
+            </div>
+            <img src="https://via.placeholder.com/50" alt="Produkt 8">
+            <button class="add-to-list" onclick="addToList('Bluza Adidas', 159.00)">Dodaj do listy</button>
+        </div>
+    </div>
+
+    <div class="total-price">Suma: 0 PLN</div>
+
+    <div id="shopping-list">
+        <h3>Twoja lista zakupów:</h3>
+        <div id="list-items"></div>
+    </div>
+</div>
+
+<script>
+    let shoppingList = [];
+    let total = 0;
+
+    function toggleSubcategory(subcategory) {
+        const subcategoryElement = document.getElementById(subcategory);
+        if (subcategoryElement.style.display === 'none' || subcategoryElement.style.display === '') {
+            subcategoryElement.style.display = 'block';
+        } else {
+            subcategoryElement.style.display = 'none';
+        }
+    }
+
+    function addToList(productName, productPrice) {
+        shoppingList.push({ name: productName, price: productPrice });
+        total += productPrice;
+        updateShoppingList();
+    }
+
+    function updateShoppingList() {
+        const listItems = document.getElementById('list-items');
+        listItems.innerHTML = '';
+        shoppingList.forEach((item, index) => {
+            listItems.innerHTML += `
+                <div class="list-item">
+                    <span>${item.name} - ${item.price.toFixed(2)} PLN</span>
+                    <button class="remove-btn" onclick="removeFromList(${index})">Usuń</button>
+                </div>
+            `;
+        });
+        document.querySelector('.total-price').innerText = Suma: ${total.toFixed(2)} PLN;
+    }
+
+    function removeFromList(index) {
+        total -= shoppingList[index].price;
+        shoppingList.splice(index, 1);
+        updateShoppingList();
+    }
+</script>
+
+</body>
+</html>
